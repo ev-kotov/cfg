@@ -1,0 +1,13 @@
+app:
+  name: "override-app"
+
+server:
+  port: 8080
+  debug: false
+
+database:
+  host: "override.db.localhost"
+
+features:
+  enabled: false    # Будет переопределено env
+  timeout: 30       # Будет переопределено env

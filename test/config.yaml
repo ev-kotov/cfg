@@ -1,0 +1,17 @@
+app:
+  name: "test-app"
+  version: "1.0.0"
+
+server:
+  host: "localhost"
+  port: 3000
+  debug: true
+
+database:
+  host: "db.localhost"
+  port: 5432
+  name: "test_db"
+
+features:
+  enabled: false
+  timeout: 30
