@@ -28,20 +28,21 @@ Create a type with your configuration structure:
 ```go
 type Config struct {
     App struct {
-        Name    string `yaml:"name" env:"APP_NAME"`
-        Version string `yaml:"version" env:"APP_VERSION"`
+        Name    string `yaml:"name" env:"NAME"`
+        Version string `yaml:"version" env:"VERSION"`
     } `yaml:"app"`
     
     Server struct {
-        Host  string `yaml:"host" env:"SERVER_HOST"`
-        Port  int    `yaml:"port" env:"SERVER_PORT"`
-        Debug bool   `yaml:"debug" env:"SERVER_DEBUG"`
+        Host  string `yaml:"host" env:"HOST"`
+        Port  int    `yaml:"port" env:"PORT"`
+        Debug bool   `yaml:"debug" env:"DEBUG"`
+``
     } `yaml:"server"`
     
     Database struct {
-        Host string `yaml:"host" env:"DB_HOST"`
-        Port int    `yaml:"port" env:"DB_PORT"`
-        Name string `yaml:"name" env:"DB_NAME"`
+        Host string `yaml:"host" env:"HOST"`
+        Port int    `yaml:"port" env:"PORT"`
+        Name string `yaml:"name" env:"NAME"`
     } `yaml:"database"`
 }
 ```
@@ -220,8 +221,8 @@ go run main.go
 
 **Staging (partial overrides):**
 ```bash
-export MYAPP_PORT=8080
-export MYAPP_DEBUG=true
+export APP_PORT=8080
+export APP_DEBUG=true
 go run main.go
 ```
 
