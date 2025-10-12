@@ -234,9 +234,6 @@ go run main.go
 6. Push to the branch: `git push origin feature/amazing-feature`
 7. Open a Pull Request
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 - Built with the Go standard library principles in mind
 - YAML parsing powered by [go-yaml/yaml](https://github.com/go-yaml/yaml)

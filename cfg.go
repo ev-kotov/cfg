@@ -1,4 +1,4 @@
-// Package cfg provides configuration loading with environment variable override.
+// Package cfg A simple and idiomatic Go library for loading configuration with environment variable override support.
 package cfg
 
 import (
@@ -41,14 +41,14 @@ func WithEnvPrefix(prefix string) Action {
 	}
 }
 
-// MustLoad load config or panic.
+// MustLoad downloads the configuration or panics.
 func MustLoad(cfg any, paramsAction ...Action) {
 	if err := Load(cfg, paramsAction...); err != nil {
 		panic("cfg: failed to load config: " + err.Error())
 	}
 }
 
-// Load loads configuration from file with environment variable support.
+// Load downloads the configuration
 func Load(cfg any, paramsActions ...Action) error {
 	if err := validateConfig(cfg); err != nil {
 		return fmt.Errorf("invalid config: %w", err)
