@@ -1,4 +1,4 @@
-module github.com/ev-kotov/cfg
+module cfg
 
 go 1.24
 

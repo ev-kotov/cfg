@@ -10,8 +10,7 @@ import (
 	"strings"
 )
 
-// Action implement func for main parameters
-type Action func(*parameters)
+type ParameterAction func(*parameters)
 
 type parameters struct {
 	paths     []string
@@ -20,35 +19,35 @@ type parameters struct {
 }
 
 // WithPaths set path for find config files
-func WithPaths(paths ...string) Action {
+func WithPaths(paths ...string) ParameterAction {
 	return func(o *parameters) {
 		o.paths = paths
 	}
 }
 
 // WithName set config name
-func WithName(name string) Action {
+func WithName(name string) ParameterAction {
 	return func(o *parameters) {
 		o.name = name
 	}
 }
 
 // WithEnvPrefix set prefix for environment variables
-func WithEnvPrefix(prefix string) Action {
+func WithEnvPrefix(prefix string) ParameterAction {
 	return func(o *parameters) {
 		o.envPrefix = strings.TrimSuffix(strings.ToUpper(prefix), "_")
 	}
 }
 
-// MustLoad load config or panic
-func MustLoad(cfg any, paramsAction ...Action) {
+// MustLoad this sugar, load config or panic
+func MustLoad(cfg any, paramsAction ...ParameterAction) {
 	if err := Load(cfg, paramsAction...); err != nil {
 		panic("cfg: failed to load config: " + err.Error())
 	}
 }
 
 // Load load config
-func Load(cfg any, paramsActions ...Action) error {
+func Load(cfg any, paramsActions ...ParameterAction) error {
 	if err := validateConfig(cfg); err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}
