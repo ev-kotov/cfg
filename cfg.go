@@ -1,3 +1,4 @@
+// Package cfg provides configuration loading with environment variable override.
 package cfg
 
 import (
@@ -10,7 +11,8 @@ import (
 	"strings"
 )
 
-type ParameterAction func(*parameters)
+// Action implements func for main parameters.
+type Action func(*parameters)
 
 type parameters struct {
 	paths     []string
@@ -18,36 +20,36 @@ type parameters struct {
 	envPrefix string
 }
 
-// WithPaths set path for find config files
-func WithPaths(paths ...string) ParameterAction {
+// WithPaths set path for find config files.
+func WithPaths(paths ...string) Action {
 	return func(o *parameters) {
 		o.paths = paths
 	}
 }
 
-// WithName set config name
-func WithName(name string) ParameterAction {
+// WithName set config name.
+func WithName(name string) Action {
 	return func(o *parameters) {
 		o.name = name
 	}
 }
 
-// WithEnvPrefix set prefix for environment variables
-func WithEnvPrefix(prefix string) ParameterAction {
+// WithEnvPrefix set prefix for environment variables.
+func WithEnvPrefix(prefix string) Action {
 	return func(o *parameters) {
 		o.envPrefix = strings.TrimSuffix(strings.ToUpper(prefix), "_")
 	}
 }
 
-// MustLoad this sugar, load config or panic
-func MustLoad(cfg any, paramsAction ...ParameterAction) {
+// MustLoad load config or panic.
+func MustLoad(cfg any, paramsAction ...Action) {
 	if err := Load(cfg, paramsAction...); err != nil {
 		panic("cfg: failed to load config: " + err.Error())
 	}
 }
 
-// Load load config
-func Load(cfg any, paramsActions ...ParameterAction) error {
+// Load loads configuration from file with environment variable support.
+func Load(cfg any, paramsActions ...Action) error {
 	if err := validateConfig(cfg); err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}
