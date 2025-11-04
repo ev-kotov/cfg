@@ -4,9 +4,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/ev-kotov/cfg)](https://goreportcard.com/report/github.com/ev-kotov/cfg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-A simple and idiomatic Go library for loading configuration with environment variable override support.
+A simple and idiomatic **Go** library for loading configuration with environment variable override support.
 
-## Features
+## Highlights
 
 - **YAML configuration files** with sensible defaults
 - **Environment variable override** for flexible deployment
@@ -15,7 +15,6 @@ A simple and idiomatic Go library for loading configuration with environment var
 - **Zero dependencies** beyond standard library and YAML parser
 
 ## Installation
-
 ```bash
 go get github.com/ev-kotov/cfg
 ```
@@ -226,14 +225,8 @@ go run main.go
 ```
 
 ## Contributing
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes and add tests
-4. Run tests: `go test -v`
-5. Commit your changes: `git commit -m 'Add amazing feature'`
-6. Push to the branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
+Bug fixes are welcome.
+For anything other than bug fixes, please open an issue first to discuss your proposed changes.
+The package has a very limited scope, so it's important to discuss any new features before implementing them.
 
-## Acknowledgments
-- Built with the Go standard library principles in mind
-- YAML parsing powered by [go-yaml/yaml](https://github.com/go-yaml/yaml)
+Make sure to add or update tests as needed.
